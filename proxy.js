@@ -4,14 +4,14 @@ let imageIndex = {}; // key: tên chuẩn hoá (không đuôi), value: File
 function normalize(str) {
   return str
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // bỏ dấu tiếng Việt
-    .toLowerCase()
+    .toUpperCase()
     .trim()
     .replace(/[\s/]+/g, '_');
 }
 function extractPrefix(name) {
-  const match = normalize(name).match(/^([a-z0-9]+)_/);
+  const match = normalize(name).match(/^([A-Z0-9]+)_/);
   
-  return match? match[1].toUpperCase()  : null;
+  return match? match[1]  : null;
 }
 function parseNameLine(line) {
   // khớp "dct_s86_001 x3", "dct_s86_001x3", "dct_s86_001 X 3"...
@@ -34,7 +34,7 @@ async function fetchCardImage(name) {
   const key = normalize(name);
   const baseUrl = `${IMAGE_BASE_URL}${prefix}/`; // ghép thẳng prefix làm tên thư mục
 
-  for (const ext of ['png', 'jpg', 'jpeg', 'webp']) {
+  for (const ext of ['png', 'JPG', 'jpeg', 'webp']) {
     const url = `${baseUrl}${key}.${ext}`;
     const res = await fetch(url);
     if (res.ok) return await res.arrayBuffer();
