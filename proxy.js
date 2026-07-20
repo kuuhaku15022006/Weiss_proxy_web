@@ -34,7 +34,7 @@ async function fetchCardImage(name) {
   const key = normalize(name);
   const baseUrl = `${IMAGE_BASE_URL}${prefix}/`; // ghép thẳng prefix làm tên thư mục
 
-  for (const ext of ['png', 'JPG', 'jpeg', 'webp']) {
+  for (const ext of ['PNG', 'JPG', 'JPEG', 'WEBP']) {
     const url = `${baseUrl}${key}.${ext}`;
     const res = await fetch(url);
     if (res.ok) return await res.arrayBuffer();
