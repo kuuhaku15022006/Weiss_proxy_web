@@ -6,7 +6,8 @@ function normalize(str) {
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // bỏ dấu tiếng Việt
     .toUpperCase()
     .trim()
-    .replace(/[\s/]+/g, '_');
+    .replace(/[\s/-]+/g, '_');
+
 }
 function extractPrefix(name) {
   const match = normalize(name).match(/^([A-Z0-9]+)_/);
