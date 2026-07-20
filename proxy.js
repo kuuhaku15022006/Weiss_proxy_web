@@ -7,7 +7,6 @@ function normalize(str) {
     .toUpperCase()
     .trim()
     .replace(/[\s/-]+/g, '_');
-
 }
 function extractPrefix(name) {
   const match = normalize(name).match(/^([A-Z0-9]+)_/);
