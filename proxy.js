@@ -77,11 +77,24 @@ async function matchImages() {
   return matched;
 }
 
-// Ví dụ: khổ A4 (595 x 842 point), lưới 3 cột x 3 hàng, mỗi ô 63x88mm (theo point: 1mm ≈ 2.83pt)
+// // Ví dụ: khổ A4 (595 x 842 point), lưới 3 cột x 3 hàng, mỗi ô 63x88mm (theo point: 1mm ≈ 2.83pt)
+// const PAGE = { width: 595, height: 842 };
+
+// const CELL_W = 178.6; // ~63mm
+// const CELL_H = 249.5; // ~88mm
+// const MARGIN_X = 20;
+// const MARGIN_Y = 20;
+// const GAP = 4;
+// Khổ A4 (595 x 842 point)
+// Lưới 3 cột x 3 hàng
+// Kích thước card Yu-Gi-Oh!: 59 x 86 mm
+// 1 mm ≈ 2.83 pt
+
 const PAGE = { width: 595, height: 842 };
 
-const CELL_W = 178.6; // ~63mm
-const CELL_H = 249.5; // ~88mm
+const CELL_W = 166.97; // 59mm ≈ 167pt
+const CELL_H = 243.38; // 86mm ≈ 243.4pt
+
 const MARGIN_X = 20;
 const MARGIN_Y = 20;
 const GAP = 4;
