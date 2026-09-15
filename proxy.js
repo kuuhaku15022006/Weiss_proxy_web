@@ -77,43 +77,61 @@ async function matchImages() {
   return matched;
 }
 
-// // Ví dụ: khổ A4 (595 x 842 point), lưới 3 cột x 3 hàng, mỗi ô 63x88mm (theo point: 1mm ≈ 2.83pt)
- const PAGE = { width: 595, height: 842 };
+const PAGE = { width: 595, height: 842 };
 
- const CELL_W = 178.6; // ~63mm
- const CELL_H = 249.5; // ~88mm
- const MARGIN_X = 20;
- const MARGIN_Y = 20;
- const GAP = 4;
-// Khổ A4 (595 x 842 point)
-// Lưới 3 cột x 3 hàng
+const CARD_SIZES = {
+standard: {
+width: 63 * 2.83,  // 63mm
+height: 88 * 2.83  // 88mm
+},
 
-// Kích thước card Yu-Gi-Oh!: 59 x 86 mm
-// 1 mm ≈ 2.83 pt
+yugioh: {
+width: 59 * 2.83,  // 59mm
+height: 86 * 2.83  // 86mm
+}
+};
 
-//const PAGE = { width: 595, height: 842 };
+const MARGIN_X = 20;
+const MARGIN_Y = 20;
+const GAP = 4;
 
-//const CELL_W = 166.97; // 59mm ≈ 167pt
-//const CELL_H = 243.38; // 86mm ≈ 243.4pt
+function getSelectedCardSize() {
+const selected = document.querySelector(
+'input[name="cardSize"]:checked'
+);
 
-//const MARGIN_X = 20;
-//const MARGIN_Y = 20;
-//const GAP = 4;
+return CARD_SIZES[selected.value];
+}
+
 
 function buildGridTemplate(cols = 3, rows = 3) {
-  const cells = [];
-  for (let r = 0; r < rows; r++) {
-    for (let c = 0; c < cols; c++) {
-      cells.push({
-        x: MARGIN_X + c * (CELL_W + GAP),
-        y: PAGE.height - MARGIN_Y - (r + 1) * CELL_H - r * GAP, // pdf-lib gốc toạ độ ở dưới-trái
-        width: CELL_W,
-        height: CELL_H
-      });
-    }
-  }
-  return cells; // 9 ô/trang
+const size = getSelectedCardSize();
+
+const CELL_W = size.width;
+const CELL_H = size.height;
+
+const cells = [];
+
+for (let r = 0; r < rows; r++) {
+for (let c = 0; c < cols; c++) {
+cells.push({
+x: MARGIN_X + c * (CELL_W + GAP),
+
+    y: PAGE.height
+      - MARGIN_Y
+      - (r + 1) * CELL_H
+      - r * GAP,
+
+    width: CELL_W,
+    height: CELL_H
+  });
 }
+
+}
+
+return cells;
+}
+
 function drawCutMarks(page, cell) {
   const len = 6; // độ dài vạch, point
   const { rgb } = PDFLib;
