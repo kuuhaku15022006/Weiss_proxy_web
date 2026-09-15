@@ -21,8 +21,25 @@ LƯU Ý: TRONG THỜI GIAN SỬ DỤNG, NẾU THẤY THIẾU MỘT SỐ CARD/SER
 THÌ NHẮN EM ĐỂ EM TÌM THỬ RỒI UP LÊN SAU
 "></textarea>
 
-  <h2>Xuất file</h2>
-  <button id="exportPdfBtn">Xuất PDF</button>
+<h2>Kích thước card</h2>
+
+<div class="size-options">
+  <label>
+    <input type="radio" name="cardSize" value="standard" checked>
+    <span>Standard</span>
+    <small>63 × 88 mm</small>
+  </label>
+
+  <label>
+    <input type="radio" name="cardSize" value="yugioh">
+    <span>Yu-Gi-Oh!</span>
+    <small>59 × 86 mm</small>
+  </label>
+</div>
+
+<h2>Xuất file</h2>
+<button id="exportPdfBtn">Xuất PDF</button>
+
 
   <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
   <script src="https://unpkg.com/docx@8/build/index.js"></script>
