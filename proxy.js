@@ -81,19 +81,19 @@ const PAGE = { width: 595, height: 842 };
 
 const CARD_SIZES = {
 standard: {
-width: 63 * 2.83,  // 63mm
-height: 88 * 2.83  // 88mm
+width: 63 * 2.83456,  // 63mm
+height: 88 * 2.83456  // 88mm
 },
 
 yugioh: {
-width: 59 * 2.83,  // 59mm
-height: 86 * 2.83  // 86mm
+width: 59 * 2.83456,  // 59mm
+height: 86 * 2.83456  // 86mm
 }
 };
 
 const MARGIN_X = 20;
 const MARGIN_Y = 20;
-const GAP = 4;
+const GAP = 0;
 
 function getSelectedCardSize() {
 const selected = document.querySelector(
