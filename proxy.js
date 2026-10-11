@@ -120,7 +120,6 @@ x: MARGIN_X + c * (CELL_W + GAP),
     y: PAGE.height
       - MARGIN_Y
       - (r + 1) * CELL_H
-      - r * GAP,
 
     width: CELL_W,
     height: CELL_H
